@@ -78,13 +78,13 @@ import { sendRequest } from "../lib/sendRequest";
     useEffect(()=> {
         setEnderecoCliente('')
         setBairroCliente('')
-        setCidadeCliente('')
+        setCidadeCliente('')    
         setEstadoCliente('')
         buscaDadosCEP();
     },[cepCliente])
 
     return (
-        <div id="default-modal" aria-hidden="true" className={`${status} flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-screen h-screen`}>
+        <div id="default-modal" aria-hidden="true" className={`${status} flex overflow-y-auto overflow-x-hidden bg-black bg-opacity-40 fixed top-0 right-0 left-0 z-50 justify-center items-center w-screen h-screen`}>
             <div className="relative p-4 w-full max-w-2xl max-h-full">
 
                 <div className="relative bg-white rounded-lg shadow dark:bg-white">

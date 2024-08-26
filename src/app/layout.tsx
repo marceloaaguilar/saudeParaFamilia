@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Axi Saúde",
-  description: "Mantendo sua saúde em dia!",
+  title: "Cartão Saúde da Família",
+  description: "Cuidando sempre de você",
 };
 
 export default function RootLayout({

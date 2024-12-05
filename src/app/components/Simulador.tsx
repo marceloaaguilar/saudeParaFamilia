@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import ModalAssinatura from "./ModalAssinatura";
+import ModalAssinatura from "./ModalAssinatura/ModalAssinatura";
 
 
 export default function Simulador(){

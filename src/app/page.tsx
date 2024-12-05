@@ -1,5 +1,4 @@
 import Navbar from "./components/Navbar";
-import Simulador from "./components/Simulador";
 import Header from "./components/Header";
 import Info from "./components/Info";
 import Benefits from "./components/Benefits";
@@ -14,7 +13,6 @@ export default function Home() {
       <Info/>
       <Benefits/>
       <CardPrices/>
-      <Simulador/>
       <Footer/>
     </div>
   );

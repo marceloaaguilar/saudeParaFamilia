@@ -12,10 +12,12 @@
     "@fullpage/react-fullpage": "^0.1.42",
     "@types/react-slick": "^0.23.13",
     "axios": "^1.7.4",
+    "lottie-react": "^2.4.0",
     "next": "^14.2.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
+    "react-spinners": "^0.14.1",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.10"
   },

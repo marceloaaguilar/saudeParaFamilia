@@ -19,7 +19,7 @@ export default function CardPrices(){
 
   return (
     <>
-      <div className="container flex justify-center lg:px-0 px-5">
+      <div className="container flex justify-center lg:px-0 px-5 mx-auto">
         <div className="max-w-5xl py-8 text-center">
           <p className="text-custom-blue text-xl my-3 tracking-widest">Nossos planos</p>
           <p className="text-black text-5xl font-bold my-4">Os melhores descontos no</p>

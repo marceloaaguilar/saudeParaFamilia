@@ -24,18 +24,7 @@ export default function Header(){
               </div>
             </div>
           </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="relative">
-              <Image src='/bannerAssistenciaPet.jpg' alt="Banner de uma mulher com um cachorro" width={1920} height={1080} className="w-full h-64 md:h-screen object-cover"/>
-              <div className="absolute inset-0 bg-black opacity-50" />
-              <div className="absolute inset-0 flex items-center justify-center flex-col text-center text-wrap">
-                <h2 className="text-white text-4xl md:text-8xl font-bold">Assistência Pet</h2>
-                <p className='lg:text-3xl my-2 text-white px-5'>Telemedicina, Consultas Presenciais e tudo que você precisa para seu filho de 4 patas</p>
-              </div>
-            </div>
-          </SwiperSlide>
-
+          
           <SwiperSlide>
             <div className="relative">
               <Image src='/bannerClubeDescontos.jpg' alt="Banner de uma mulher com um cachorro" width={1920} height={1080} className="w-full h-64 md:h-screen object-cover"/>

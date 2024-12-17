@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,14 +20,23 @@ export default function Navbar() {
         <div className={`w-full md:flex md:w-auto md:order-1 ${isOpen ? 'block' : 'hidden'}`} id="navbar-sticky">
           <ul className="flex flex-col p-4 mt-4 font-medium border rounded-lg bg-custom-blue md:bg-transparent md:p-0 md:mt-0 md:flex-row md:space-x-8 md:border-0">
             <li>
-              <a href="#" className="block py-2 px-3 text-white" aria-current="page">Início</a>
+              <Link href="#"  scroll={true}>
+                <span className="block py-2 px-3 text-white" aria-current="page">Início</span>
+              </Link>
             </li>
+
             <li>
-              <a href="#" className="block py-2 px-3 text-white">Sobre Nós</a>
+              <Link href="#about-us"  scroll={true}>
+                <span className="block py-2 px-3 text-white" aria-current="page">Sobre nós</span>
+              </Link>
             </li>
+
             <li>
-              <a href="#" className="block py-2 px-3 text-white">Nossos Planos</a>
+              <Link href="#cardPrices"  scroll={true}>
+                <span className="block py-2 px-3 text-white" aria-current="page">Nossos planos</span>
+              </Link>
             </li>
+            
             <li>
               <a href="#" className="block py-2 px-3 text-white">Contato</a>
             </li>

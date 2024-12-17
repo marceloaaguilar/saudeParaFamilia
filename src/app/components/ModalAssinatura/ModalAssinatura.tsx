@@ -1,6 +1,4 @@
 import { useContext, useState, createContext, use, useEffect } from "react"
-import Simulador from "../Simulador";
-import { stat } from "fs";
 import { sendRequest } from "../../lib/sendRequest";
 import { Assinatura, Cliente, ModalAssinaturaProps } from "../../interfaces/interfaces";
 import { ClipLoader } from 'react-spinners';
@@ -8,7 +6,7 @@ import Lottie from 'lottie-react';
 import successAnimation from './success-animation.json';
 import errorAnimation from'./error-animation.json';
 
-  const ModalAssinatura: React.FC<ModalAssinaturaProps> = ({ status, onChange, valor }) => {
+const ModalAssinatura: React.FC<ModalAssinaturaProps> = ({ status, onChange, valor }) => {
     const handleChange = (status:string) => {
       onChange(status); 
     };
@@ -36,10 +34,10 @@ import errorAnimation from'./error-animation.json';
     const [telefoneCliente, setTelefoneCliente]             = useState<string>('');
     const [idUsuario, setIdUsuario]                         = useState<string>('');
     const [userIpAddress, setUserIpAddress]                 = useState<string>('');
+    const [demonstraMsgErro, setDemonstraMsgErro]           = useState<boolean>(false);
     const CYCLE_SUBSCRIPTION = "WEEKLY";
 
     const [statusCheckout, setStatus] = useState<'loading' | 'success' | 'error' | null>(null);
-
     
     const processaCobrancaCartao = async () => {
         
@@ -107,6 +105,7 @@ import errorAnimation from'./error-animation.json';
 
     const processaCriacaoCliente = async () => {
 
+        setDemonstraMsgErro(false);
         const clienteExiste:Cliente = await verificarCadastroCliente();
         
         if (clienteExiste) {
@@ -136,6 +135,7 @@ import errorAnimation from'./error-animation.json';
         });
 
         if (!responseCadastroCliente) {
+            setDemonstraMsgErro(true);
             return false;
         }
 
@@ -144,7 +144,10 @@ import errorAnimation from'./error-animation.json';
     }
 
     const buscaDadosCEP = async () => {
-        if (cepCliente.length === 8) {
+
+        const cepSemMascara:string = cepCliente.replace(/\D/g, '');
+
+        if (cepCliente.length === 9) {
             try {
                 const response = await sendRequest({
                     url: `${process.env.NEXT_PUBLIC_VIA_CEP_URL}/${cepCliente}/json`,
@@ -165,6 +168,11 @@ import errorAnimation from'./error-animation.json';
     }
 
     useEffect(()=> {
+
+        if (cepCliente) {
+            formatarCep()
+        }
+
         setEnderecoCliente('')
         setBairroCliente('')
         setCidadeCliente('')    
@@ -250,7 +258,7 @@ import errorAnimation from'./error-animation.json';
 
     const processaDemonstracaoDadosCartao = async () => {
 
-        setDemonstraMsgCampoObrigatorio(false);
+        setDemonstraMsgErro(false);
 
         if (!cepCliente || !enderecoCliente || !numeroCliente || !bairroCliente || !cidadeCliente || !estadoCliente) {
             setDemonstraMsgCampoObrigatorio(true);
@@ -275,12 +283,14 @@ import errorAnimation from'./error-animation.json';
         return userIpAddress;
     }
 
+    const formatarCep = async () => {
 
-    // useEffect(()=> {
-    //     setDemonstraFormDados(false), 
-    //     setDemonstraFormEndereco(false),
-    //     setDemonstraFormCartao(true)
-    // })
+        const cepFormatado = cepCliente.replace(/\D/g, '') 
+        .replace(/^(\d{5})(\d)/, '$1-$2')
+        .slice(0, 9);
+
+        setCepCliente(cepFormatado);
+    }
 
     return (
         <div id="default-modal" className={`${status} flex overflow-y-auto overflow-x-hidden bg-black bg-opacity-40 fixed top-0 right-0 left-0 z-50 justify-center items-center w-screen h-screen`}>
@@ -385,9 +395,9 @@ import errorAnimation from'./error-animation.json';
                                 <input type="text" id="estado" name="estado" value={estadoCliente}  onChange={(e)=> setEstadoCliente(e.target.value)} className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black" />
                                 {demonstraMsgCampoObrigatorio && !estadoCliente ?  <p className="mt-2 text-sm text-red-600" v-if="$v.user.email.$error">O estado é obrigatória</p> : '' }
                             </div>
-                            
-                            <div>
-                               
+
+                            <div className="mb-4">
+                                {demonstraMsgErro ?  <p className="mt-2 text-sm text-red-600" v-if="$v.user.email.$error">Ocorreu um erro ao processar os dados. Tente novamente</p> : '' }
                             </div>
 
                             <div className="flex space-x-4">

@@ -35,7 +35,7 @@ const ModalAssinatura: React.FC<ModalAssinaturaProps> = ({ status, onChange, val
     const [idUsuario, setIdUsuario]                         = useState<string>('');
     const [userIpAddress, setUserIpAddress]                 = useState<string>('');
     const [demonstraMsgErro, setDemonstraMsgErro]           = useState<boolean>(false);
-    const CYCLE_SUBSCRIPTION = "WEEKLY";
+    const CYCLE_SUBSCRIPTION = "MONTHLY";
 
     const [statusCheckout, setStatus] = useState<'loading' | 'success' | 'error' | null>(null);
     

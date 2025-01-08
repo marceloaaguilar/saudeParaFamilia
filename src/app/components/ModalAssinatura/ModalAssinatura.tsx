@@ -35,7 +35,7 @@ const ModalAssinatura: React.FC<ModalAssinaturaProps> = ({ status, onChange, val
     const [idUsuario, setIdUsuario]                         = useState<string>('');
     const [userIpAddress, setUserIpAddress]                 = useState<string>('');
     const [demonstraMsgErro, setDemonstraMsgErro]           = useState<boolean>(false);
-    const CYCLE_SUBSCRIPTION = "WEEKLY";
+    const CYCLE_SUBSCRIPTION = "MONTHLY";
 
     const [statusCheckout, setStatus] = useState<'loading' | 'success' | 'error' | null>(null);
     
@@ -49,7 +49,8 @@ const ModalAssinatura: React.FC<ModalAssinaturaProps> = ({ status, onChange, val
             return false;
         }
 
-        const date = new Date();
+        const nowUtc = new Date();
+        const date = new Date(nowUtc.getTime() - 3 * 60 * 60 * 1000);
 
         const enderecoIpUsuario = await obterEnderecoIPUsuario();
        

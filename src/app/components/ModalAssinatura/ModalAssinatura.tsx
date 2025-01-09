@@ -108,13 +108,13 @@ const ModalAssinatura: React.FC<ModalAssinaturaProps> = ({ status, onChange, val
 
         setDemonstraMsgErro(false);
         const clienteExiste:Cliente = await verificarCadastroCliente();
-        
+
         if (clienteExiste) {
             setIdUsuario(clienteExiste.id);
             return clienteExiste;
         };
 
-        if (!nomeCliente || !cpfCliente || !telefoneCliente || !enderecoCliente || !numeroCliente || !complementoCliente || !bairroCliente || !cepCliente) {
+        if (!nomeCliente || !cpfCliente || !telefoneCliente || !enderecoCliente || !numeroCliente  || !bairroCliente || !cepCliente) {
             return false;
         }
 
@@ -139,6 +139,8 @@ const ModalAssinatura: React.FC<ModalAssinaturaProps> = ({ status, onChange, val
             setDemonstraMsgErro(true);
             return false;
         }
+
+        setIdUsuario(responseCadastroCliente.id);
 
         return true;
         
@@ -243,16 +245,14 @@ const ModalAssinatura: React.FC<ModalAssinaturaProps> = ({ status, onChange, val
     }
 
     const verificarCadastroCliente = async () => {
-
         const clienteRequest = await sendRequest({
-            url: `${process.env.NEXT_PUBLIC_ASAAS_URL}/customers?${cpfCliente}`,
+            url: `${process.env.NEXT_PUBLIC_ASAAS_URL}/customers?cpfCnpj=${cpfCliente.replace(/\D/g, "")}`,
             method: 'GET'
         });
 
         if (clienteRequest.data.length === 0) {
             return false
         }
-
 
         return clienteRequest.data[0];
     }

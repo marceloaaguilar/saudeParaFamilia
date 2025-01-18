@@ -10,7 +10,6 @@ interface Benefit {
 
 const benefits: Benefit[] = [
   { title: 'Telemedicina', description: 'Acesso instantâneo a profissionais de saúde qualificados, sem sair de casa. Consultas médicas online disponíveis 24h, 7 dias na semana para atender suas necessidades de saúde de forma rápida e conveniente.', icon: <FaUserMd /> },
-  { title: 'Assistência Pet', description:'Seu companheiro de quatro patas também merece cuidados especiais. Oferecemos assistência veterinária para garantir o bem-estar do seu animal de estimação em momentos de necessidade.' , icon: <FaDog/>},
   { title: 'Clube de Descontos', description:'Economize em suas compras diárias e desfrute de descontos exclusivos em uma ampla rede de parceiros como: farmácias, supermercados, restaurantes, entre outro' , icon: <FaShoppingCart/> },
   { title: 'Assistência funeral', description:'Em momentos difíceis, estamos ao seu lado para oferecer suporte emocional e logístico. Nosso plano de assistência funeral ajuda a aliviar o fardo financeiro e organizacional durante esses momentos sensíveis.', icon: <FaChurch/> },
 ];

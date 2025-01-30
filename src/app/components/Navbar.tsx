@@ -38,8 +38,17 @@ export default function Navbar() {
             </li>
             
             <li>
+              <a href="https://www.hotsite.clubecerto.com.br/axisaude" target='_blank' className="block py-2 px-3 text-white">Descontos</a>
+            </li>
+
+            <li>
+              <a href="https://www.saude.clubecerto.com.br/axisaude" target='_blank' className="block py-2 px-3 text-white">Telemedicina</a>
+            </li>
+            
+            <li>
               <a href="#" className="block py-2 px-3 text-white">Contato</a>
             </li>
+
           </ul>
         </div>
       </div>

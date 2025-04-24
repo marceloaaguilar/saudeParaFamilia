@@ -28,9 +28,9 @@ export default function Footer(){
             <div>
               <h3 className="text-xl font-semibold mb-4">Endereço</h3>
               <p className="text-sm">
-                Rua Exemplo, 123<br />
-                Bairro Central<br />
-                Cidade, Estado, CEP 12345-678
+                Rua Professor Moraes 562<br />
+                Sala 103 - Savassi - <br />
+                Belo Horizonte/MG - CEP 30.150-903
               </p>
             </div>
             {/* Redes Sociais e WhatsApp */}
